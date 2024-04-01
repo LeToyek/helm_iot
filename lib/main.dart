@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:helm_iot/bootstrap.dart';
 import 'package:helm_iot/domain/routes/routes.dart';
 import 'package:helm_iot/ui/pages/iot_device_page.dart';
+import 'package:helm_iot/ui/widgets/window_overlay/heart_beat_overlay.dart';
 
 void main() {
   bootstrap();
@@ -25,6 +26,17 @@ class MainApp extends ConsumerWidget {
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
+}
+
+// overlay entry point
+@pragma("vm:entry-point")
+void overlayMain() {
+  bootstrap();
+  const primaryColor = Color(0xFFE0E0E0);
+  runApp(const ProviderScope(
+    child: MaterialApp(
+        debugShowCheckedModeBanner: false, home: HeartBeatOverlay()),
+  ));
 }
 
 class MyHomePage extends StatefulWidget {
@@ -55,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      Navigator.pushNamed(context, ReportPage.routePath);
+      Navigator.pushNamed(context, IOTDevice.routePath);
     });
   }
 

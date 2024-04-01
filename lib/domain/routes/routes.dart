@@ -7,6 +7,6 @@ part 'routes.g.dart';
 @riverpod
 Map<String, Widget Function(BuildContext context)> routes(RoutesRef ref) {
   return {
-    ReportPage.routePath: (context) => const ReportPage(),
+    IOTDevice.routePath: (context) => const IOTDevice(),
   };
 }

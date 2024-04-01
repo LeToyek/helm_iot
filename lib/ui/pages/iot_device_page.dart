@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_overlay_window/flutter_overlay_window.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:helm_iot/ui/widgets/heart_beat_chart.dart';
 import 'package:helm_iot/ui/widgets/oxygen_chart.dart';
@@ -34,10 +35,30 @@ class _IOTDeviceState extends ConsumerState<IOTDevice> {
                 },
                 child: const Text('Go back!'),
               ),
+              ElevatedButton(
+                onPressed: () async {
+                  await FlutterOverlayWindow.closeOverlay();
+                },
+                child: const Text('Close Overlay!'),
+              ),
             ],
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(onPressed: () async {
+        final status = await FlutterOverlayWindow.isPermissionGranted();
+        print("status: $status");
+        if (status) {
+          await FlutterOverlayWindow.showOverlay(
+            overlayTitle: "Test",
+            width: 500,
+            height: 200,
+            enableDrag: true,
+          );
+        } else {
+          await FlutterOverlayWindow.requestPermission();
+        }
+      }),
     );
   }
 }

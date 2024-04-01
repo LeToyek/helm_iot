@@ -30,6 +30,7 @@ class HeartBeatChart extends ConsumerWidget {
     final width = size.width / 2 - 24;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           title,
