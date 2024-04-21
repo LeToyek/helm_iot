@@ -34,19 +34,30 @@ class GuidancePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: ListView.builder(
-          itemCount: guidance.length,
-          itemBuilder: (context, index) {
-            final data = guidance[index];
-            return _buildContainer(context,
-                imageUrl: data['imageUrl']!,
-                index: index + 1,
-                title: data['title']!,
-                description: data['description']!);
-          },
-        ));
+    final colorScheme = Theme.of(context).colorScheme;
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: colorScheme.primary,
+        centerTitle: true,
+        foregroundColor: Colors.white,
+        title: const Text(
+          'Panduan Pakai',
+        ),
+      ),
+      body: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: ListView.builder(
+            itemCount: guidance.length,
+            itemBuilder: (context, index) {
+              final data = guidance[index];
+              return _buildContainer(context,
+                  imageUrl: data['imageUrl']!,
+                  index: index + 1,
+                  title: data['title']!,
+                  description: data['description']!);
+            },
+          )),
+    );
   }
 
   Widget _buildContainer(context,
@@ -58,6 +69,7 @@ class GuidancePage extends ConsumerWidget {
     return Column(
       children: [
         Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               height: 100,
@@ -79,21 +91,26 @@ class GuidancePage extends ConsumerWidget {
             ),
             Expanded(
                 child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   "$index.",
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 32),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 32,
+                      color: Colors.grey.shade600),
                 ),
                 Text(
                   title,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 16),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: Colors.grey.shade600),
                 ),
                 Text(
                   description,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 12),
+                  style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
                 ),
               ],
             ))
