@@ -31,7 +31,18 @@ class MainApp extends ConsumerWidget {
 void overlayMain() {
   bootstrap();
   runApp(const ProviderScope(
-    child: MaterialApp(
-        debugShowCheckedModeBanner: false, home: HeartBeatOverlay()),
+    child: OverlayApp(),
   ));
+}
+
+class OverlayApp extends ConsumerWidget {
+  const OverlayApp({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return MaterialApp(
+        theme: lightTheme,
+        debugShowCheckedModeBanner: false,
+        home: const HeartBeatOverlay());
+  }
 }
