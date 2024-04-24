@@ -1,0 +1,25 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'report_model.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$ReportModelImpl _$$ReportModelImplFromJson(Map<String, dynamic> json) =>
+    _$ReportModelImpl(
+      avgBPMValue: json['avgBPMValue'] as int?,
+      avgOxygenValue: json['avgOxygenValue'] as int?,
+      avgBlinkValue: json['avgBlinkValue'] as int?,
+      status: json['status'] as String?,
+      createdAt: json['createdAt'] as String?,
+    );
+
+Map<String, dynamic> _$$ReportModelImplToJson(_$ReportModelImpl instance) =>
+    <String, dynamic>{
+      'avgBPMValue': instance.avgBPMValue,
+      'avgOxygenValue': instance.avgOxygenValue,
+      'avgBlinkValue': instance.avgBlinkValue,
+      'status': instance.status,
+      'createdAt': instance.createdAt,
+    };

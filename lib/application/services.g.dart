@@ -21,5 +21,20 @@ final batteryServiceProvider = AutoDisposeProvider<BatteryService>.internal(
 );
 
 typedef BatteryServiceRef = AutoDisposeProviderRef<BatteryService>;
+String _$reportServiceHash() => r'b0c940e508a5aecb52b017d5f17af04849cd19ce';
+
+/// See also [reportService].
+@ProviderFor(reportService)
+final reportServiceProvider = AutoDisposeProvider<ReportService>.internal(
+  reportService,
+  name: r'reportServiceProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$reportServiceHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef ReportServiceRef = AutoDisposeProviderRef<ReportService>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
