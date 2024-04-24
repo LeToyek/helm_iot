@@ -59,7 +59,7 @@ class _BatteryChartState extends ConsumerState<BatteryChart> {
               strokeWidth: 12,
               color: color,
               backgroundColor: Colors.grey.shade200,
-              value: 80 / 100,
+              value: batteryData.batteryValue! / 100,
             ),
           ),
         ),

@@ -42,13 +42,20 @@ class HomePage extends ConsumerWidget {
                       Navigator.pushNamed(context, IOTDevice.routePath);
                     },
                     child: Container(
-                      height: size.height / 5,
-                      width: size.width,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(24),
-                          color: colorScheme.onPrimary,
-                          boxShadow: [generalShadow]),
-                    ),
+                        height: size.height / 5,
+                        width: size.width,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(24),
+                            color: colorScheme.onPrimary,
+                            boxShadow: [generalShadow]),
+                        child: Center(
+                          child: Text(
+                            "Perangkat IOT",
+                            style: textTheme.bodyMedium!.apply(
+                                fontWeightDelta: 2,
+                                color: colorScheme.onBackground),
+                          ),
+                        )),
                   ),
                   const SizedBox(
                     height: 16,

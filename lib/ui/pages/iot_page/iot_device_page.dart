@@ -91,12 +91,6 @@ class _IOTDeviceState extends ConsumerState<IOTDevice> {
                   ),
                 ),
               ),
-              ElevatedButton(
-                onPressed: () async {
-                  await FlutterOverlayWindow.closeOverlay();
-                },
-                child: const Text('Close Overlay!'),
-              ),
             ],
           ),
         ),

@@ -8,12 +8,12 @@ part of 'oxygen_model.dart';
 
 _$OxygenModelImpl _$$OxygenModelImplFromJson(Map<String, dynamic> json) =>
     _$OxygenModelImpl(
-      bpmValue: json['oxygen_value'] as int?,
+      oxygenValue: json['oxygen_value'] as int?,
       createdAt: json['created_at'] as String?,
     );
 
 Map<String, dynamic> _$$OxygenModelImplToJson(_$OxygenModelImpl instance) =>
     <String, dynamic>{
-      'oxygen_value': instance.bpmValue,
+      'oxygen_value': instance.oxygenValue,
       'created_at': instance.createdAt,
     };

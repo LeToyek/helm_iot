@@ -14,17 +14,17 @@ class OxygenController extends _$OxygenController {
   OxygenState build() {
     getDummyRealTimeOxygen();
     return InitialOxygenState(oxygensInitial: [
-      const OxygenModel(bpmValue: 0, createdAt: '00'),
-      const OxygenModel(bpmValue: 0, createdAt: '01'),
-      const OxygenModel(bpmValue: 0, createdAt: '02'),
-      const OxygenModel(bpmValue: 0, createdAt: '03'),
-      const OxygenModel(bpmValue: 0, createdAt: '04'),
-      const OxygenModel(bpmValue: 0, createdAt: '05'),
-      const OxygenModel(bpmValue: 0, createdAt: '06'),
-      const OxygenModel(bpmValue: 0, createdAt: '07'),
-      const OxygenModel(bpmValue: 0, createdAt: '08'),
-      const OxygenModel(bpmValue: 0, createdAt: '09'),
-      const OxygenModel(bpmValue: 0, createdAt: '10'),
+      const OxygenModel(oxygenValue: 0, createdAt: '00'),
+      const OxygenModel(oxygenValue: 0, createdAt: '01'),
+      const OxygenModel(oxygenValue: 0, createdAt: '02'),
+      const OxygenModel(oxygenValue: 0, createdAt: '03'),
+      const OxygenModel(oxygenValue: 0, createdAt: '04'),
+      const OxygenModel(oxygenValue: 0, createdAt: '05'),
+      const OxygenModel(oxygenValue: 0, createdAt: '06'),
+      const OxygenModel(oxygenValue: 0, createdAt: '07'),
+      const OxygenModel(oxygenValue: 0, createdAt: '08'),
+      const OxygenModel(oxygenValue: 0, createdAt: '09'),
+      const OxygenModel(oxygenValue: 0, createdAt: '10'),
     ]);
   }
 
@@ -34,7 +34,7 @@ class OxygenController extends _$OxygenController {
       // state = Loadingoxygenstate(oxygens: [...oxygens]);
       oxygens.removeAt(0);
       oxygens.add(OxygenModel(
-          bpmValue: generateRandomNumber(),
+          oxygenValue: generateRandomNumber(),
           createdAt: extractSecond(DateTime.now().toString())));
       state = LoadedOxygenState(Oxygens: [...oxygens]);
     });

@@ -6,7 +6,7 @@ part 'oxygen_model.g.dart';
 @freezed
 class OxygenModel with _$OxygenModel {
   const factory OxygenModel({
-    @JsonKey(name: 'oxygen_value') int? bpmValue,
+    @JsonKey(name: 'oxygen_value') int? oxygenValue,
     @JsonKey(name: 'created_at') String? createdAt,
   }) = _OxygenModel;
 

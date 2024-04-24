@@ -6,7 +6,7 @@ part of 'oxygen_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$oxygenControllerHash() => r'1b7b4d556655bf7592ffd2302bfe3986ba88c1d7';
+String _$oxygenControllerHash() => r'b80d195e55f35df023cbd959d73bbaae868f0b28';
 
 /// See also [OxygenController].
 @ProviderFor(OxygenController)

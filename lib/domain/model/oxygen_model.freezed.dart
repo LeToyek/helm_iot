@@ -21,7 +21,7 @@ OxygenModel _$OxygenModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$OxygenModel {
   @JsonKey(name: 'oxygen_value')
-  int? get bpmValue => throw _privateConstructorUsedError;
+  int? get oxygenValue => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   String? get createdAt => throw _privateConstructorUsedError;
 
@@ -38,7 +38,7 @@ abstract class $OxygenModelCopyWith<$Res> {
       _$OxygenModelCopyWithImpl<$Res, OxygenModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'oxygen_value') int? bpmValue,
+      {@JsonKey(name: 'oxygen_value') int? oxygenValue,
       @JsonKey(name: 'created_at') String? createdAt});
 }
 
@@ -55,13 +55,13 @@ class _$OxygenModelCopyWithImpl<$Res, $Val extends OxygenModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? bpmValue = freezed,
+    Object? oxygenValue = freezed,
     Object? createdAt = freezed,
   }) {
     return _then(_value.copyWith(
-      bpmValue: freezed == bpmValue
-          ? _value.bpmValue
-          : bpmValue // ignore: cast_nullable_to_non_nullable
+      oxygenValue: freezed == oxygenValue
+          ? _value.oxygenValue
+          : oxygenValue // ignore: cast_nullable_to_non_nullable
               as int?,
       createdAt: freezed == createdAt
           ? _value.createdAt
@@ -80,7 +80,7 @@ abstract class _$$OxygenModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'oxygen_value') int? bpmValue,
+      {@JsonKey(name: 'oxygen_value') int? oxygenValue,
       @JsonKey(name: 'created_at') String? createdAt});
 }
 
@@ -95,13 +95,13 @@ class __$$OxygenModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? bpmValue = freezed,
+    Object? oxygenValue = freezed,
     Object? createdAt = freezed,
   }) {
     return _then(_$OxygenModelImpl(
-      bpmValue: freezed == bpmValue
-          ? _value.bpmValue
-          : bpmValue // ignore: cast_nullable_to_non_nullable
+      oxygenValue: freezed == oxygenValue
+          ? _value.oxygenValue
+          : oxygenValue // ignore: cast_nullable_to_non_nullable
               as int?,
       createdAt: freezed == createdAt
           ? _value.createdAt
@@ -115,7 +115,7 @@ class __$$OxygenModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$OxygenModelImpl implements _OxygenModel {
   const _$OxygenModelImpl(
-      {@JsonKey(name: 'oxygen_value') this.bpmValue,
+      {@JsonKey(name: 'oxygen_value') this.oxygenValue,
       @JsonKey(name: 'created_at') this.createdAt});
 
   factory _$OxygenModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -123,14 +123,14 @@ class _$OxygenModelImpl implements _OxygenModel {
 
   @override
   @JsonKey(name: 'oxygen_value')
-  final int? bpmValue;
+  final int? oxygenValue;
   @override
   @JsonKey(name: 'created_at')
   final String? createdAt;
 
   @override
   String toString() {
-    return 'OxygenModel(bpmValue: $bpmValue, createdAt: $createdAt)';
+    return 'OxygenModel(oxygenValue: $oxygenValue, createdAt: $createdAt)';
   }
 
   @override
@@ -138,15 +138,15 @@ class _$OxygenModelImpl implements _OxygenModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OxygenModelImpl &&
-            (identical(other.bpmValue, bpmValue) ||
-                other.bpmValue == bpmValue) &&
+            (identical(other.oxygenValue, oxygenValue) ||
+                other.oxygenValue == oxygenValue) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, bpmValue, createdAt);
+  int get hashCode => Object.hash(runtimeType, oxygenValue, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -164,7 +164,7 @@ class _$OxygenModelImpl implements _OxygenModel {
 
 abstract class _OxygenModel implements OxygenModel {
   const factory _OxygenModel(
-          {@JsonKey(name: 'oxygen_value') final int? bpmValue,
+          {@JsonKey(name: 'oxygen_value') final int? oxygenValue,
           @JsonKey(name: 'created_at') final String? createdAt}) =
       _$OxygenModelImpl;
 
@@ -173,7 +173,7 @@ abstract class _OxygenModel implements OxygenModel {
 
   @override
   @JsonKey(name: 'oxygen_value')
-  int? get bpmValue;
+  int? get oxygenValue;
   @override
   @JsonKey(name: 'created_at')
   String? get createdAt;

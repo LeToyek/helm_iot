@@ -77,7 +77,7 @@ class OxygenChart extends ConsumerWidget {
                         xValueMapper: (OxygenModel oxygens, _) =>
                             oxygens.createdAt,
                         yValueMapper: (OxygenModel oxygens, _) =>
-                            oxygens.bpmValue,
+                            oxygens.oxygenValue,
                         animationDuration: 0,
                       )
                     ],
@@ -95,7 +95,7 @@ class OxygenChart extends ConsumerWidget {
                     width: 8,
                   ),
                   Text(
-                    "${oxygens.last.bpmValue.toString()} mmHG",
+                    "${oxygens.last.oxygenValue.toString()} mmHG",
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 24,
