@@ -1,5 +1,7 @@
 import 'package:helm_iot/application/battery_service.dart';
+import 'package:helm_iot/application/bluetooth_service.dart';
 import 'package:helm_iot/application/report_service.dart';
+import 'package:helm_iot/application/user_service.dart';
 import 'package:helm_iot/domain/repositories/repositories.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -12,3 +14,11 @@ BatteryService batteryService(BatteryServiceRef ref) =>
 @riverpod
 ReportService reportService(ReportServiceRef ref) =>
     ReportService(ref.watch(reportRepositoryProvider));
+
+@riverpod
+UserService userService(UserServiceRef ref) =>
+    UserService(ref.watch(userRepositoryProvider));
+
+@riverpod
+BluetoothService bluetoothService(BluetoothServiceRef ref) =>
+    BluetoothService(ref.watch(bluetoothRepositoryProvider));

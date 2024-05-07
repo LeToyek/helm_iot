@@ -1,4 +1,4 @@
-package com.example.helm_iot
+package com.opticon.mobile
 
 import io.flutter.embedding.android.FlutterActivity
 

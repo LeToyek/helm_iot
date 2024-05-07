@@ -54,5 +54,37 @@ final reportRepositoryProvider = AutoDisposeProvider<ReportRepository>.internal(
 );
 
 typedef ReportRepositoryRef = AutoDisposeProviderRef<ReportRepository>;
+String _$userRepositoryHash() => r'd39c1e16981e912754a96e602d5d43faeba28609';
+
+/// See also [userRepository].
+@ProviderFor(userRepository)
+final userRepositoryProvider = AutoDisposeProvider<UserRepository>.internal(
+  userRepository,
+  name: r'userRepositoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$userRepositoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef UserRepositoryRef = AutoDisposeProviderRef<UserRepository>;
+String _$bluetoothRepositoryHash() =>
+    r'587186595a7addfba5cbfdae48857771b3dd7509';
+
+/// See also [bluetoothRepository].
+@ProviderFor(bluetoothRepository)
+final bluetoothRepositoryProvider =
+    AutoDisposeProvider<BluetoothRepository>.internal(
+  bluetoothRepository,
+  name: r'bluetoothRepositoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$bluetoothRepositoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef BluetoothRepositoryRef = AutoDisposeProviderRef<BluetoothRepository>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

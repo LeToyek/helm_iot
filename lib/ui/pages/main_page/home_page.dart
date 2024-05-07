@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:helm_iot/ui/pages/guidance_page/guidance_page.dart';
 import 'package:helm_iot/ui/pages/iot_page/iot_device_page.dart';
@@ -55,7 +56,7 @@ class HomePage extends ConsumerWidget {
                                 fontWeightDelta: 2,
                                 color: colorScheme.onBackground),
                           ),
-                        )),
+                        )).animate(),
                   ),
                   const SizedBox(
                     height: 16,

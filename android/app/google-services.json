@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "783870231214",
+    "project_id": "opticon-fb",
+    "storage_bucket": "opticon-fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:783870231214:android:0959e3a65ba7b6fcb2a33f",
+        "android_client_info": {
+          "package_name": "com.opticon.mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "783870231214-i63sn9dn9tg7s5e5a6v2b04qkuisori2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6CroSizrVdKz95EjWyteCVD3RUGyZ7kY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "783870231214-i63sn9dn9tg7s5e5a6v2b04qkuisori2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

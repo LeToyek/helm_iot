@@ -82,9 +82,9 @@ class _IOTDeviceState extends ConsumerState<IOTDevice> {
                       Text(
                         'Tampilkan di Layar',
                         style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                        ),
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
                       ),
                       SizedBox(width: 16),
                     ],

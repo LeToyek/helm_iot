@@ -23,6 +23,9 @@ mixin _$ReportModel {
   int? get avgBPMValue => throw _privateConstructorUsedError;
   int? get avgOxygenValue => throw _privateConstructorUsedError;
   int? get avgBlinkValue => throw _privateConstructorUsedError;
+  List<HeartBeatModel>? get heartBeatsMinutes =>
+      throw _privateConstructorUsedError;
+  List<BlinkModel>? get blinkModels => throw _privateConstructorUsedError;
   String? get status => throw _privateConstructorUsedError;
   String? get createdAt => throw _privateConstructorUsedError;
 
@@ -42,6 +45,8 @@ abstract class $ReportModelCopyWith<$Res> {
       {int? avgBPMValue,
       int? avgOxygenValue,
       int? avgBlinkValue,
+      List<HeartBeatModel>? heartBeatsMinutes,
+      List<BlinkModel>? blinkModels,
       String? status,
       String? createdAt});
 }
@@ -62,6 +67,8 @@ class _$ReportModelCopyWithImpl<$Res, $Val extends ReportModel>
     Object? avgBPMValue = freezed,
     Object? avgOxygenValue = freezed,
     Object? avgBlinkValue = freezed,
+    Object? heartBeatsMinutes = freezed,
+    Object? blinkModels = freezed,
     Object? status = freezed,
     Object? createdAt = freezed,
   }) {
@@ -78,6 +85,14 @@ class _$ReportModelCopyWithImpl<$Res, $Val extends ReportModel>
           ? _value.avgBlinkValue
           : avgBlinkValue // ignore: cast_nullable_to_non_nullable
               as int?,
+      heartBeatsMinutes: freezed == heartBeatsMinutes
+          ? _value.heartBeatsMinutes
+          : heartBeatsMinutes // ignore: cast_nullable_to_non_nullable
+              as List<HeartBeatModel>?,
+      blinkModels: freezed == blinkModels
+          ? _value.blinkModels
+          : blinkModels // ignore: cast_nullable_to_non_nullable
+              as List<BlinkModel>?,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -102,6 +117,8 @@ abstract class _$$ReportModelImplCopyWith<$Res>
       {int? avgBPMValue,
       int? avgOxygenValue,
       int? avgBlinkValue,
+      List<HeartBeatModel>? heartBeatsMinutes,
+      List<BlinkModel>? blinkModels,
       String? status,
       String? createdAt});
 }
@@ -120,6 +137,8 @@ class __$$ReportModelImplCopyWithImpl<$Res>
     Object? avgBPMValue = freezed,
     Object? avgOxygenValue = freezed,
     Object? avgBlinkValue = freezed,
+    Object? heartBeatsMinutes = freezed,
+    Object? blinkModels = freezed,
     Object? status = freezed,
     Object? createdAt = freezed,
   }) {
@@ -136,6 +155,14 @@ class __$$ReportModelImplCopyWithImpl<$Res>
           ? _value.avgBlinkValue
           : avgBlinkValue // ignore: cast_nullable_to_non_nullable
               as int?,
+      heartBeatsMinutes: freezed == heartBeatsMinutes
+          ? _value._heartBeatsMinutes
+          : heartBeatsMinutes // ignore: cast_nullable_to_non_nullable
+              as List<HeartBeatModel>?,
+      blinkModels: freezed == blinkModels
+          ? _value._blinkModels
+          : blinkModels // ignore: cast_nullable_to_non_nullable
+              as List<BlinkModel>?,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -155,8 +182,12 @@ class _$ReportModelImpl implements _ReportModel {
       {this.avgBPMValue,
       this.avgOxygenValue,
       this.avgBlinkValue,
+      final List<HeartBeatModel>? heartBeatsMinutes,
+      final List<BlinkModel>? blinkModels,
       this.status,
-      this.createdAt});
+      this.createdAt})
+      : _heartBeatsMinutes = heartBeatsMinutes,
+        _blinkModels = blinkModels;
 
   factory _$ReportModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ReportModelImplFromJson(json);
@@ -167,6 +198,27 @@ class _$ReportModelImpl implements _ReportModel {
   final int? avgOxygenValue;
   @override
   final int? avgBlinkValue;
+  final List<HeartBeatModel>? _heartBeatsMinutes;
+  @override
+  List<HeartBeatModel>? get heartBeatsMinutes {
+    final value = _heartBeatsMinutes;
+    if (value == null) return null;
+    if (_heartBeatsMinutes is EqualUnmodifiableListView)
+      return _heartBeatsMinutes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<BlinkModel>? _blinkModels;
+  @override
+  List<BlinkModel>? get blinkModels {
+    final value = _blinkModels;
+    if (value == null) return null;
+    if (_blinkModels is EqualUnmodifiableListView) return _blinkModels;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final String? status;
   @override
@@ -174,7 +226,7 @@ class _$ReportModelImpl implements _ReportModel {
 
   @override
   String toString() {
-    return 'ReportModel(avgBPMValue: $avgBPMValue, avgOxygenValue: $avgOxygenValue, avgBlinkValue: $avgBlinkValue, status: $status, createdAt: $createdAt)';
+    return 'ReportModel(avgBPMValue: $avgBPMValue, avgOxygenValue: $avgOxygenValue, avgBlinkValue: $avgBlinkValue, heartBeatsMinutes: $heartBeatsMinutes, blinkModels: $blinkModels, status: $status, createdAt: $createdAt)';
   }
 
   @override
@@ -188,6 +240,10 @@ class _$ReportModelImpl implements _ReportModel {
                 other.avgOxygenValue == avgOxygenValue) &&
             (identical(other.avgBlinkValue, avgBlinkValue) ||
                 other.avgBlinkValue == avgBlinkValue) &&
+            const DeepCollectionEquality()
+                .equals(other._heartBeatsMinutes, _heartBeatsMinutes) &&
+            const DeepCollectionEquality()
+                .equals(other._blinkModels, _blinkModels) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
@@ -195,8 +251,15 @@ class _$ReportModelImpl implements _ReportModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, avgBPMValue, avgOxygenValue,
-      avgBlinkValue, status, createdAt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      avgBPMValue,
+      avgOxygenValue,
+      avgBlinkValue,
+      const DeepCollectionEquality().hash(_heartBeatsMinutes),
+      const DeepCollectionEquality().hash(_blinkModels),
+      status,
+      createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -217,6 +280,8 @@ abstract class _ReportModel implements ReportModel {
       {final int? avgBPMValue,
       final int? avgOxygenValue,
       final int? avgBlinkValue,
+      final List<HeartBeatModel>? heartBeatsMinutes,
+      final List<BlinkModel>? blinkModels,
       final String? status,
       final String? createdAt}) = _$ReportModelImpl;
 
@@ -229,6 +294,10 @@ abstract class _ReportModel implements ReportModel {
   int? get avgOxygenValue;
   @override
   int? get avgBlinkValue;
+  @override
+  List<HeartBeatModel>? get heartBeatsMinutes;
+  @override
+  List<BlinkModel>? get blinkModels;
   @override
   String? get status;
   @override
