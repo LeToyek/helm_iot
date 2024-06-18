@@ -56,7 +56,7 @@ class ReportRepository implements ReportRepositoryImpl {
             0, (previousValue, element) => previousValue + element.bpmValue!) ~/
         heartBeatsMinutes.length;
     final avgBlinkValue = blinkModels.fold<int>(0,
-            (previousValue, element) => previousValue + element.blinkValue) ~/
+            (previousValue, element) => previousValue + element.blinkValue!) ~/
         blinkModels.length;
 
     print("Heart Beats: $heartBeatsMinutes");

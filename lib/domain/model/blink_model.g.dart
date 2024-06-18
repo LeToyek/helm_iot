@@ -8,12 +8,14 @@ part of 'blink_model.dart';
 
 _$BlinkModelImpl _$$BlinkModelImplFromJson(Map<String, dynamic> json) =>
     _$BlinkModelImpl(
-      blinkValue: json['blinkValue'] as int,
-      createdAt: json['createdAt'] as String,
+      blinkValue: json['blink_value'] as int?,
+      blinkDuration: (json['blink_duration'] as num?)?.toDouble(),
+      createdAt: json['created_at'] as String?,
     );
 
 Map<String, dynamic> _$$BlinkModelImplToJson(_$BlinkModelImpl instance) =>
     <String, dynamic>{
-      'blinkValue': instance.blinkValue,
-      'createdAt': instance.createdAt,
+      'blink_value': instance.blinkValue,
+      'blink_duration': instance.blinkDuration,
+      'created_at': instance.createdAt,
     };

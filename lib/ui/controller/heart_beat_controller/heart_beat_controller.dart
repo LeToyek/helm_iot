@@ -41,6 +41,6 @@ class HeartBeatController extends _$HeartBeatController {
   }
 
   int generateRandomNumber() {
-    return Random().nextInt(110) + 80;
+    return Random().nextInt(30) + 80;
   }
 }

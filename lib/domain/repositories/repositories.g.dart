@@ -86,5 +86,22 @@ final bluetoothRepositoryProvider =
 );
 
 typedef BluetoothRepositoryRef = AutoDisposeProviderRef<BluetoothRepository>;
+String _$predictionRepositoryHash() =>
+    r'e290bd77e08b430057a970a45db3d5c09ca4ce2b';
+
+/// See also [predictionRepository].
+@ProviderFor(predictionRepository)
+final predictionRepositoryProvider =
+    AutoDisposeProvider<PredicitonRepository>.internal(
+  predictionRepository,
+  name: r'predictionRepositoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$predictionRepositoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef PredictionRepositoryRef = AutoDisposeProviderRef<PredicitonRepository>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

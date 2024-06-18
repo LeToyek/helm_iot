@@ -20,8 +20,12 @@ BlinkModel _$BlinkModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BlinkModel {
-  int get blinkValue => throw _privateConstructorUsedError;
-  String get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'blink_value')
+  int? get blinkValue => throw _privateConstructorUsedError;
+  @JsonKey(name: 'blink_duration')
+  double? get blinkDuration => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
+  String? get createdAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +39,10 @@ abstract class $BlinkModelCopyWith<$Res> {
           BlinkModel value, $Res Function(BlinkModel) then) =
       _$BlinkModelCopyWithImpl<$Res, BlinkModel>;
   @useResult
-  $Res call({int blinkValue, String createdAt});
+  $Res call(
+      {@JsonKey(name: 'blink_value') int? blinkValue,
+      @JsonKey(name: 'blink_duration') double? blinkDuration,
+      @JsonKey(name: 'created_at') String? createdAt});
 }
 
 /// @nodoc
@@ -51,18 +58,23 @@ class _$BlinkModelCopyWithImpl<$Res, $Val extends BlinkModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? blinkValue = null,
-    Object? createdAt = null,
+    Object? blinkValue = freezed,
+    Object? blinkDuration = freezed,
+    Object? createdAt = freezed,
   }) {
     return _then(_value.copyWith(
-      blinkValue: null == blinkValue
+      blinkValue: freezed == blinkValue
           ? _value.blinkValue
           : blinkValue // ignore: cast_nullable_to_non_nullable
-              as int,
-      createdAt: null == createdAt
+              as int?,
+      blinkDuration: freezed == blinkDuration
+          ? _value.blinkDuration
+          : blinkDuration // ignore: cast_nullable_to_non_nullable
+              as double?,
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -75,7 +87,10 @@ abstract class _$$BlinkModelImplCopyWith<$Res>
       __$$BlinkModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int blinkValue, String createdAt});
+  $Res call(
+      {@JsonKey(name: 'blink_value') int? blinkValue,
+      @JsonKey(name: 'blink_duration') double? blinkDuration,
+      @JsonKey(name: 'created_at') String? createdAt});
 }
 
 /// @nodoc
@@ -89,18 +104,23 @@ class __$$BlinkModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? blinkValue = null,
-    Object? createdAt = null,
+    Object? blinkValue = freezed,
+    Object? blinkDuration = freezed,
+    Object? createdAt = freezed,
   }) {
     return _then(_$BlinkModelImpl(
-      blinkValue: null == blinkValue
+      blinkValue: freezed == blinkValue
           ? _value.blinkValue
           : blinkValue // ignore: cast_nullable_to_non_nullable
-              as int,
-      createdAt: null == createdAt
+              as int?,
+      blinkDuration: freezed == blinkDuration
+          ? _value.blinkDuration
+          : blinkDuration // ignore: cast_nullable_to_non_nullable
+              as double?,
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -108,19 +128,27 @@ class __$$BlinkModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$BlinkModelImpl implements _BlinkModel {
-  const _$BlinkModelImpl({required this.blinkValue, required this.createdAt});
+  const _$BlinkModelImpl(
+      {@JsonKey(name: 'blink_value') this.blinkValue,
+      @JsonKey(name: 'blink_duration') this.blinkDuration,
+      @JsonKey(name: 'created_at') this.createdAt});
 
   factory _$BlinkModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$BlinkModelImplFromJson(json);
 
   @override
-  final int blinkValue;
+  @JsonKey(name: 'blink_value')
+  final int? blinkValue;
   @override
-  final String createdAt;
+  @JsonKey(name: 'blink_duration')
+  final double? blinkDuration;
+  @override
+  @JsonKey(name: 'created_at')
+  final String? createdAt;
 
   @override
   String toString() {
-    return 'BlinkModel(blinkValue: $blinkValue, createdAt: $createdAt)';
+    return 'BlinkModel(blinkValue: $blinkValue, blinkDuration: $blinkDuration, createdAt: $createdAt)';
   }
 
   @override
@@ -130,13 +158,16 @@ class _$BlinkModelImpl implements _BlinkModel {
             other is _$BlinkModelImpl &&
             (identical(other.blinkValue, blinkValue) ||
                 other.blinkValue == blinkValue) &&
+            (identical(other.blinkDuration, blinkDuration) ||
+                other.blinkDuration == blinkDuration) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, blinkValue, createdAt);
+  int get hashCode =>
+      Object.hash(runtimeType, blinkValue, blinkDuration, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -154,16 +185,22 @@ class _$BlinkModelImpl implements _BlinkModel {
 
 abstract class _BlinkModel implements BlinkModel {
   const factory _BlinkModel(
-      {required final int blinkValue,
-      required final String createdAt}) = _$BlinkModelImpl;
+      {@JsonKey(name: 'blink_value') final int? blinkValue,
+      @JsonKey(name: 'blink_duration') final double? blinkDuration,
+      @JsonKey(name: 'created_at') final String? createdAt}) = _$BlinkModelImpl;
 
   factory _BlinkModel.fromJson(Map<String, dynamic> json) =
       _$BlinkModelImpl.fromJson;
 
   @override
-  int get blinkValue;
+  @JsonKey(name: 'blink_value')
+  int? get blinkValue;
   @override
-  String get createdAt;
+  @JsonKey(name: 'blink_duration')
+  double? get blinkDuration;
+  @override
+  @JsonKey(name: 'created_at')
+  String? get createdAt;
   @override
   @JsonKey(ignore: true)
   _$$BlinkModelImplCopyWith<_$BlinkModelImpl> get copyWith =>

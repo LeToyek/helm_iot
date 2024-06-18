@@ -6,8 +6,9 @@ part 'blink_model.g.dart';
 @freezed
 class BlinkModel with _$BlinkModel {
   const factory BlinkModel({
-    required int blinkValue,
-    required String createdAt,
+    @JsonKey(name: 'blink_value') int? blinkValue,
+    @JsonKey(name: 'blink_duration') double? blinkDuration,
+    @JsonKey(name: 'created_at') String? createdAt,
   }) = _BlinkModel;
 
   factory BlinkModel.fromJson(Map<String, dynamic> json) =>

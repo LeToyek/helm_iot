@@ -10,6 +10,7 @@ _$HeartBeatModelImpl _$$HeartBeatModelImplFromJson(Map<String, dynamic> json) =>
     _$HeartBeatModelImpl(
       bpmValue: json['bpm_value'] as int?,
       createdAt: json['created_at'] as String?,
+      isPrediction: json['is_prediction'] as String?,
     );
 
 Map<String, dynamic> _$$HeartBeatModelImplToJson(
@@ -17,4 +18,5 @@ Map<String, dynamic> _$$HeartBeatModelImplToJson(
     <String, dynamic>{
       'bpm_value': instance.bpmValue,
       'created_at': instance.createdAt,
+      'is_prediction': instance.isPrediction,
     };

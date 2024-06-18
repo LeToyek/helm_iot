@@ -27,7 +27,8 @@ class HeartBeatChart extends ConsumerWidget {
   }
 
   Widget _buildChart(List<HeartBeatModel> heartBeats, String title, Size size) {
-    final width = size.width / 2 - 24;
+    final width = size.width - 24;
+    final height = size.height / 5;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
@@ -55,7 +56,7 @@ class HeartBeatChart extends ConsumerWidget {
                 opacity: 0.5,
                 child: SizedBox(
                   width: width,
-                  height: width,
+                  height: height,
                   child: SfCartesianChart(
                     primaryXAxis: const CategoryAxis(
                       axisLine: AxisLine(width: 1),

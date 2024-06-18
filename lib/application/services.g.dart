@@ -65,5 +65,21 @@ final bluetoothServiceProvider = AutoDisposeProvider<BluetoothService>.internal(
 );
 
 typedef BluetoothServiceRef = AutoDisposeProviderRef<BluetoothService>;
+String _$predictionServiceHash() => r'cfc8532a6b2877f3fde54590ea399572562132b2';
+
+/// See also [predictionService].
+@ProviderFor(predictionService)
+final predictionServiceProvider =
+    AutoDisposeProvider<PredicitonService>.internal(
+  predictionService,
+  name: r'predictionServiceProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$predictionServiceHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef PredictionServiceRef = AutoDisposeProviderRef<PredicitonService>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

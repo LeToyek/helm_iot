@@ -16,6 +16,7 @@ class LaporanPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final colorScheme = Theme.of(context).colorScheme;
     final reportState = ref.watch(reportControllerProvider);
+    final size = MediaQuery.of(context).size;
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
         appBar: AppBar(
@@ -64,6 +65,28 @@ class LaporanPage extends ConsumerWidget {
                       const SizedBox(
                         height: 16,
                       ),
+                      SizedBox(
+                        // margin: const EdgeInsets.only(bottom: 16),
+                        height: size.height / 6,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            _buildWidgetDuration(context,
+                                timeIndex: "11:31 pm",
+                                label: "Start Time",
+                                icon: Ionicons.car_sport_outline),
+                            _buildWidgetDuration(context,
+                                timeIndex: "12:12 pm",
+                                label: "End Time",
+                                icon: Ionicons.moon_outline,
+                                isCenter: true),
+                            _buildWidgetDuration(context,
+                                timeIndex: "7:32 h",
+                                label: "End Time",
+                                icon: Ionicons.time_outline)
+                          ],
+                        ),
+                      ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -82,6 +105,9 @@ class LaporanPage extends ConsumerWidget {
                             child: SfCartesianChart(
                                 legend: const Legend(
                                   isVisible: true,
+                                  textStyle: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 tooltipBehavior: TooltipBehavior(
                                     enable: true,
@@ -128,6 +154,14 @@ class LaporanPage extends ConsumerWidget {
                                   ),
                                 ]),
                           ),
+                          Row(
+                            children: [
+                              _buildItemResult(context,
+                                  itemIndex: "81 BPM",
+                                  label: "Avg BPM",
+                                  icon: Ionicons.heart_outline)
+                            ],
+                          )
                         ],
                       ),
                       const SizedBox(
@@ -151,6 +185,9 @@ class LaporanPage extends ConsumerWidget {
                             child: SfCartesianChart(
                                 legend: const Legend(
                                   isVisible: true,
+                                  textStyle: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 tooltipBehavior: TooltipBehavior(
                                     enable: true,
@@ -176,7 +213,8 @@ class LaporanPage extends ConsumerWidget {
                                         top: Radius.circular(10)),
                                     dataSource: report.blinkModels ?? [],
                                     xValueMapper: (BlinkModel data, _) =>
-                                        convertDateTimeToMinute(data.createdAt),
+                                        convertDateTimeToMinute(
+                                            data.createdAt!),
                                     yValueMapper: (BlinkModel data, _) =>
                                         data.blinkValue,
                                   ),
@@ -188,12 +226,25 @@ class LaporanPage extends ConsumerWidget {
                                     name: 'Rata-rata',
                                     dataSource: report.blinkModels ?? [],
                                     xValueMapper: (BlinkModel data, _) =>
-                                        convertDateTimeToMinute(data.createdAt),
+                                        convertDateTimeToMinute(
+                                            data.createdAt!),
                                     yValueMapper: (BlinkModel data, _) =>
                                         report.avgBlinkValue ?? 0,
                                   ),
                                 ]),
                           ),
+                          Row(
+                            children: [
+                              _buildItemResult(context,
+                                  itemIndex: "12 KPM",
+                                  label: "Avg KPM",
+                                  icon: Ionicons.eye_outline),
+                              _buildItemResult(context,
+                                  itemIndex: "0.4 detik",
+                                  label: "Blink Duration",
+                                  icon: Ionicons.eye_outline),
+                            ],
+                          )
                         ],
                       ),
                       const SizedBox(
@@ -277,6 +328,133 @@ class LaporanPage extends ConsumerWidget {
               child: Text(message),
             ),
         });
+  }
+
+  Widget _buildWidgetDuration(context,
+      {required String timeIndex,
+      required String label,
+      required IconData icon,
+      bool isCenter = false}) {
+    return Expanded(
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        margin: const EdgeInsets.symmetric(horizontal: 8),
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.surface,
+          borderRadius: BorderRadius.circular(12),
+          // border: Border.all(color: Colors.grey, width: 1)
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+              ),
+              child: Icon(
+                icon,
+                size: 24,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ),
+            const SizedBox(
+              height: 4,
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  timeIndex,
+                  style: Theme.of(context).textTheme.titleMedium!.apply(
+                      color: Theme.of(context).colorScheme.onBackground,
+                      // fontSizeDelta: 4,
+                      fontWeightDelta: 2),
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                Text(
+                  label,
+                  style: Theme.of(context).textTheme.bodyMedium!.apply(
+                        color: Theme.of(context).colorScheme.onBackground,
+                      ),
+                ),
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildItemResult(context,
+      {required String itemIndex,
+      required String label,
+      required IconData icon}) {
+    return Expanded(
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        margin: const EdgeInsets.symmetric(horizontal: 8),
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.surface,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+              blurRadius: 10,
+              offset: const Offset(0, 0),
+            )
+          ],
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+              ),
+              child: Icon(
+                icon,
+                size: 24,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(left: 8),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    itemIndex,
+                    style: Theme.of(context).textTheme.titleMedium!.apply(
+                        color: Theme.of(context).colorScheme.onBackground,
+                        fontWeightDelta: 2),
+                  ),
+                  Text(
+                    label,
+                    style: Theme.of(context).textTheme.bodySmall!.apply(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onBackground
+                              .withOpacity(0.4),
+                        ),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 
   String convertDateTimeToMinute(String dateTime) {

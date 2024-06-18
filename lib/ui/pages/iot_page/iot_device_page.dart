@@ -3,7 +3,6 @@ import 'package:flutter_overlay_window/flutter_overlay_window.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:helm_iot/ui/widgets/blink_chart.dart';
 import 'package:helm_iot/ui/widgets/heart_beat_chart.dart';
-import 'package:helm_iot/ui/widgets/oxygen_chart.dart';
 
 class IOTDevice extends ConsumerStatefulWidget {
   static const routePath = '/iot_device';
@@ -34,14 +33,11 @@ class _IOTDeviceState extends ConsumerState<IOTDevice> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildSubTitle('Status'),
-              _buildStatusSwitchWidget(context, 'disconnected'),
+              _buildStatusSwitchWidget(context, 'connected'),
               const SizedBox(height: 24),
               const BlinkChart(),
               const SizedBox(height: 24),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [HeartBeatChart(), OxygenChart()],
-              ),
+              const HeartBeatChart(),
               const SizedBox(height: 24),
               _buildSubTitle("Tampilkan di Layar"),
               Text(

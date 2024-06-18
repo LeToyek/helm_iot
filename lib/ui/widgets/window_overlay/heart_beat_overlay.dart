@@ -5,13 +5,10 @@ import 'package:helm_iot/ui/controller/blink_controller/blink_controller.dart';
 import 'package:helm_iot/ui/controller/blink_controller/blink_state.dart';
 import 'package:helm_iot/ui/controller/heart_beat_controller/heart_beat_controller.dart';
 import 'package:helm_iot/ui/controller/heart_beat_controller/heart_beat_state.dart';
-import 'package:helm_iot/ui/controller/oxygen_controller/oxygen_controller.dart';
-import 'package:helm_iot/ui/controller/oxygen_controller/oxygen_state.dart';
 
 enum OverlayModuleState {
   heartBeat,
   blink,
-  oxygen,
 }
 
 class HeartBeatOverlay extends ConsumerStatefulWidget {
@@ -32,7 +29,7 @@ class _HeartBeatOverlayState extends ConsumerState<HeartBeatOverlay> {
     } else if (_overlayModuleState == OverlayModuleState.blink) {
       return colorScheme.surfaceVariant;
     }
-    return Colors.blueAccent.shade700;
+    return colorScheme.surfaceVariant;
   }
 
   IconData getIcon() {
@@ -41,7 +38,7 @@ class _HeartBeatOverlayState extends ConsumerState<HeartBeatOverlay> {
     } else if (_overlayModuleState == OverlayModuleState.blink) {
       return Icons.remove_red_eye;
     }
-    return Icons.cloud;
+    return Icons.remove_red_eye;
   }
 
   @override
@@ -55,7 +52,7 @@ class _HeartBeatOverlayState extends ConsumerState<HeartBeatOverlay> {
             if (_overlayModuleState == OverlayModuleState.heartBeat) {
               _overlayModuleState = OverlayModuleState.blink;
             } else if (_overlayModuleState == OverlayModuleState.blink) {
-              _overlayModuleState = OverlayModuleState.oxygen;
+              _overlayModuleState = OverlayModuleState.heartBeat;
             } else {
               _overlayModuleState = OverlayModuleState.heartBeat;
             }
@@ -64,7 +61,7 @@ class _HeartBeatOverlayState extends ConsumerState<HeartBeatOverlay> {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 500),
           curve: Curves.easeInOut,
-          width: _overlayModuleState == OverlayModuleState.oxygen ? 180 : 160,
+          width: 160,
           height: 50,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
@@ -109,17 +106,10 @@ class _HeartBeatOverlayState extends ConsumerState<HeartBeatOverlay> {
     );
   }
 
-  Widget _buildText(List<dynamic> data) {
+  Widget buildText(List<dynamic> data) {
     if (_overlayModuleState == OverlayModuleState.blink) {
       return Text(
         "${data.last.blinkValue} KPM",
-        style: const TextStyle(
-            color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
-      );
-    }
-    if (_overlayModuleState == OverlayModuleState.oxygen) {
-      return Text(
-        "${data.last.oxygenValue} mmHG",
         style: const TextStyle(
             color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
       );
@@ -135,31 +125,23 @@ class _HeartBeatOverlayState extends ConsumerState<HeartBeatOverlay> {
   Widget getData() {
     final heartBeatsState = ref.watch(heartBeatControllerProvider);
     final blinkState = ref.watch(blinkControllerProvider);
-    final oxygenState = ref.watch(oxygenControllerProvider);
     return switch (_overlayModuleState) {
       OverlayModuleState.heartBeat => switch (heartBeatsState) {
           InitialHeartBeatState(heartBeats: final heartBeatsInitial) =>
-            _buildText(heartBeatsInitial),
+            buildText(heartBeatsInitial),
           LoadingHeartBeatState(heartBeats: final heartBeats) =>
-            _buildText(heartBeats),
+            buildText(heartBeats),
           LoadedHeartBeatState(heartBeats: final heartBeats) =>
-            _buildText(heartBeats),
+            buildText(heartBeats),
           ErrorHeartBeatState(message: final message) => Text(message)
         },
       OverlayModuleState.blink => switch (blinkState) {
           InitialBlinkState(blinks: final blinksInitial) =>
-            _buildText(blinksInitial),
-          LoadingBlinkState(blinks: final blinks) => _buildText(blinks),
-          LoadedBlinkState(blinks: final blinks) => _buildText(blinks),
+            buildText(blinksInitial),
+          LoadingBlinkState(blinks: final blinks) => buildText(blinks),
+          LoadedBlinkState(blinks: final blinks) => buildText(blinks),
           ErrorBlinkState(message: final message) => Text(message)
-        },
-      OverlayModuleState.oxygen => switch (oxygenState) {
-          InitialOxygenState(oxygens: final oxygensInitial) =>
-            _buildText(oxygensInitial),
-          LoadingOxygenState(oxygens: final oxygens) => _buildText(oxygens),
-          LoadedOxygenState(oxygens: final oxygens) => _buildText(oxygens),
-          ErrorOxygenState(message: final message) => Text(message)
-        },
+        }
     };
   }
 }

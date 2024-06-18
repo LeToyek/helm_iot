@@ -45,17 +45,46 @@ class HomePage extends ConsumerWidget {
                     child: Container(
                         height: size.height / 5,
                         width: size.width,
+                        padding: const EdgeInsets.all(40),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(24),
                             color: colorScheme.onPrimary,
                             boxShadow: [generalShadow]),
-                        child: Center(
-                          child: Text(
-                            "Perangkat IOT",
-                            style: textTheme.bodyMedium!.apply(
-                                fontWeightDelta: 2,
-                                color: colorScheme.onBackground),
-                          ),
+                        child: Row(
+                          children: [
+                            Image.asset('assets/iot_i.png'),
+                            const SizedBox(
+                              width: 24,
+                            ),
+                            Expanded(
+                                child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Jangan lupa kontrol IoT Anda!",
+                                  style: textTheme.bodyMedium!
+                                      .apply(color: colorScheme.onBackground),
+                                ),
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                      border: Border(
+                                          bottom: BorderSide(
+                                              color: colorScheme.primary,
+                                              width: 4))),
+                                  child: Text(
+                                    "Kontrol IoT Di Sini",
+                                    style: textTheme.bodyMedium!.apply(
+                                        fontWeightDelta: 2,
+                                        color: colorScheme.onBackground),
+                                  ),
+                                ),
+                              ],
+                            ))
+                          ],
                         )).animate(),
                   ),
                   const SizedBox(

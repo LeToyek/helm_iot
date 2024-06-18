@@ -24,6 +24,8 @@ mixin _$HeartBeatModel {
   int? get bpmValue => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   String? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_prediction')
+  String? get isPrediction => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,7 +41,8 @@ abstract class $HeartBeatModelCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'bpm_value') int? bpmValue,
-      @JsonKey(name: 'created_at') String? createdAt});
+      @JsonKey(name: 'created_at') String? createdAt,
+      @JsonKey(name: 'is_prediction') String? isPrediction});
 }
 
 /// @nodoc
@@ -57,6 +60,7 @@ class _$HeartBeatModelCopyWithImpl<$Res, $Val extends HeartBeatModel>
   $Res call({
     Object? bpmValue = freezed,
     Object? createdAt = freezed,
+    Object? isPrediction = freezed,
   }) {
     return _then(_value.copyWith(
       bpmValue: freezed == bpmValue
@@ -66,6 +70,10 @@ class _$HeartBeatModelCopyWithImpl<$Res, $Val extends HeartBeatModel>
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isPrediction: freezed == isPrediction
+          ? _value.isPrediction
+          : isPrediction // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -81,7 +89,8 @@ abstract class _$$HeartBeatModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'bpm_value') int? bpmValue,
-      @JsonKey(name: 'created_at') String? createdAt});
+      @JsonKey(name: 'created_at') String? createdAt,
+      @JsonKey(name: 'is_prediction') String? isPrediction});
 }
 
 /// @nodoc
@@ -97,6 +106,7 @@ class __$$HeartBeatModelImplCopyWithImpl<$Res>
   $Res call({
     Object? bpmValue = freezed,
     Object? createdAt = freezed,
+    Object? isPrediction = freezed,
   }) {
     return _then(_$HeartBeatModelImpl(
       bpmValue: freezed == bpmValue
@@ -107,6 +117,10 @@ class __$$HeartBeatModelImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String?,
+      isPrediction: freezed == isPrediction
+          ? _value.isPrediction
+          : isPrediction // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -116,7 +130,8 @@ class __$$HeartBeatModelImplCopyWithImpl<$Res>
 class _$HeartBeatModelImpl implements _HeartBeatModel {
   const _$HeartBeatModelImpl(
       {@JsonKey(name: 'bpm_value') this.bpmValue,
-      @JsonKey(name: 'created_at') this.createdAt});
+      @JsonKey(name: 'created_at') this.createdAt,
+      @JsonKey(name: 'is_prediction') this.isPrediction});
 
   factory _$HeartBeatModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$HeartBeatModelImplFromJson(json);
@@ -127,10 +142,13 @@ class _$HeartBeatModelImpl implements _HeartBeatModel {
   @override
   @JsonKey(name: 'created_at')
   final String? createdAt;
+  @override
+  @JsonKey(name: 'is_prediction')
+  final String? isPrediction;
 
   @override
   String toString() {
-    return 'HeartBeatModel(bpmValue: $bpmValue, createdAt: $createdAt)';
+    return 'HeartBeatModel(bpmValue: $bpmValue, createdAt: $createdAt, isPrediction: $isPrediction)';
   }
 
   @override
@@ -141,12 +159,15 @@ class _$HeartBeatModelImpl implements _HeartBeatModel {
             (identical(other.bpmValue, bpmValue) ||
                 other.bpmValue == bpmValue) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+                other.createdAt == createdAt) &&
+            (identical(other.isPrediction, isPrediction) ||
+                other.isPrediction == isPrediction));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, bpmValue, createdAt);
+  int get hashCode =>
+      Object.hash(runtimeType, bpmValue, createdAt, isPrediction);
 
   @JsonKey(ignore: true)
   @override
@@ -166,7 +187,8 @@ class _$HeartBeatModelImpl implements _HeartBeatModel {
 abstract class _HeartBeatModel implements HeartBeatModel {
   const factory _HeartBeatModel(
           {@JsonKey(name: 'bpm_value') final int? bpmValue,
-          @JsonKey(name: 'created_at') final String? createdAt}) =
+          @JsonKey(name: 'created_at') final String? createdAt,
+          @JsonKey(name: 'is_prediction') final String? isPrediction}) =
       _$HeartBeatModelImpl;
 
   factory _HeartBeatModel.fromJson(Map<String, dynamic> json) =
@@ -178,6 +200,9 @@ abstract class _HeartBeatModel implements HeartBeatModel {
   @override
   @JsonKey(name: 'created_at')
   String? get createdAt;
+  @override
+  @JsonKey(name: 'is_prediction')
+  String? get isPrediction;
   @override
   @JsonKey(ignore: true)
   _$$HeartBeatModelImplCopyWith<_$HeartBeatModelImpl> get copyWith =>
